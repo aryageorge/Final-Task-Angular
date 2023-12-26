@@ -1,0 +1,146 @@
+<nav class="navbar" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand">Welcome to Employee-Profile</a>
+      <form class="d-flex" role="search">
+        
+        
+
+      </form>
+    </div>
+  </nav>
+ 
+
+   
+ 
+    <div class="container">
+        <form [formGroup]="profileForm">
+          <div class="row" >
+            <div class="col">
+              <div data-mdb-input-init class="form-outline justify-content-end mb-4" >
+                <label class="form-label" for="form6Example1">Profile Image</label> <br>
+               
+               <img src="data:image/jpeg;base64,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" alt="">
+                
+               
+              </div>
+            </div>
+            
+          </div>
+            
+        <div class="row" >
+            <div class="col">
+              <div data-mdb-input-init class="form-outline justify-content-end mb-4" >
+                <label class="form-label" for="form6Example1">First Name</label>
+                <input  type="text" id="form6Example1"  class="form-control " formControlName="firstName" />
+               
+              </div>
+            </div>
+            <div class="col" >
+              <div data-mdb-input-init class="form-outline justify-content-center mb-4" >
+                <label class="form-label" for="form6Example2">Last Name</label>
+                <input type="text" id="form6Example2" class="form-control" formControlName="lastName"/>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col">
+              <div data-mdb-input-init class="form-outline justify-content-end mb-4">
+                <label class="form-label" for="form6Example1">Age</label>
+                <input type="number" id="form6Example1" class="form-control "formControlName="age" />
+                
+              </div>
+            </div>
+            <div class="col" >
+              <div data-mdb-input-init class="form-outline justify-content-center mb-4">
+                <label class="form-label" for="form6Example2">DOB</label>
+                <input type="date" id="form6Example2" class="form-control"formControlName="dob" />
+                
+              </div>
+            </div>
+          </div>
+        
+        
+            
+<div class="row">
+        
+            <div class="col">
+                <div data-mdb-input-init class="form-outline justify-content-center mb-4">
+                  <label class="form-label" for="form6Example2">Employee-Role</label>
+                  <input type="text" id="form6Example2" class="form-control " formControlName="employeeRole"/>
+                 
+                </div></div>
+                <div class="col">
+                    <div data-mdb-input-init class="form-outline  justify-content-center mb-4" >
+                      <label class="form-label" for="form6Example6">Mobile Number</label>
+                        <input type="number" id="form6Example6" class="form-control"formControlName="mobileNumber" />
+                        
+                      </div> 
+     
+                    </div>
+        </div>
+   
+   
+          
+        <div class="row">
+        
+          <div class="col">
+              <div data-mdb-input-init class="form-outline justify-content-center mb-4">
+                <label class="form-label" for="form6Example2">E-mail</label>
+                <input type="email" id="form6Example2" class="form-control " formControlName="email"/>
+               
+              </div></div>
+              <div class="col">
+                  <div data-mdb-input-init class="form-outline  justify-content-center mb-4" >
+                    <label class="form-label" for="form6Example6">Blood Group</label>
+                      <input type="text" id="form6Example6" class="form-control"formControlName="bloodGroup" />
+                      
+                    </div> 
+   
+                  </div>
+      </div>
+         
+         
+          
+        
+           
+        <div class="mb-3">
+          <label for="exampleInputEmail1"  class="form-label">Gender</label> <br>
+          
+          
+       
+       
+       
+          <input class="form-check-input" type="radio"  formControlName="gender" id="flexRadioDefault1" value="Female"> Female
+          
+       
+          <input class="form-check-input" type="radio"  formControlName="gender" id="flexRadioDefault2" value="Male"> Male
+         
+         
+      </div>
+        
+         
+          <button data-mdb-ripple-init type="button"  class="btn btn-info btn-block mb-4" (click)="clickOnEdit()" *ngIf="!isClickOnEdit">{{updateButtonLabel}}</button>
+          <button data-mdb-ripple-init type="button"  class="btn btn-info btn-block mb-4" (click)="updateProfile()" *ngIf="isClickOnEdit">{{updateButtonLabel}}</button>
+          
+        </form>
+      
+      
+    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
