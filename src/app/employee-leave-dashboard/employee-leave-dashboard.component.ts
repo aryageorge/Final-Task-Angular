@@ -10,7 +10,7 @@ import{ EmployeeService}from '../shared/employee.service'
 })
 export class EmployeeLeaveDashboardComponent implements OnInit {
   formValue!: FormGroup;
-  employeeModelObj:LeaveModel=new LeaveModel();
+
   employeeData!:any;
   showAdd!:boolean;
  
@@ -32,14 +32,15 @@ export class EmployeeLeaveDashboardComponent implements OnInit {
   }
 
 postEmployeeDetails(){
-  this.employeeModelObj.typeofleave=this.formValue.value.typeofleave;
-  this.employeeModelObj.startdate=this.formValue.value.startdate;
-  this.employeeModelObj.enddate=this.formValue.value.enddate;
-  this.employeeModelObj.rfl=this.formValue.value.rfl;
+  let leave:LeaveModel={}
+  leave.typeofleave=this.formValue.value.typeofleave;
+  leave.startdate=this.formValue.value.startdate;
+   leave.enddate=this.formValue.value.enddate;
+   leave.rfl=this.formValue.value.rfl;
 
   
 
-  this.api.postEmployee(this.employeeModelObj)
+  this.api.postEmployee(leave)
   .subscribe(res=>{
     alert("Leave is added  Sucessfully")
     let ref = document.getElementById('cancel')

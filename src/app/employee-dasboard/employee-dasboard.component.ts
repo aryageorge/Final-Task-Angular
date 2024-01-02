@@ -10,10 +10,12 @@ import { AdminService } from '../shared/admin.service';
 })
 export class EmployeeDasboardComponent implements OnInit {
   employeeForm!: FormGroup;
-  employeeModelObj:EmployeeModel=new EmployeeModel();
+  
   employeeData!:any;
+  selectedRow!:EmployeeModel;
   showAdd!:boolean;
   showUpdate!:boolean;
+ 
   
   constructor(private formbuilder:FormBuilder,private api:AdminService){}
 
@@ -34,7 +36,7 @@ export class EmployeeDasboardComponent implements OnInit {
     this.getAllEmployee();
   }
   clickAddEmployee(){
-    this.employeeForm.reset();
+    
     this.showAdd=true;
     this.showUpdate=false;
   }
@@ -85,10 +87,12 @@ deleteEmployee(row:any){
     this.getAllEmployee();
   })
 }
+
 onEdit(row:any){
+  this.selectedRow=row;
   this.showAdd=false;
     this.showUpdate=true;
-  this.employeeModelObj.id=row.id;
+    
   this.employeeForm.controls['firstName'].setValue(row.firstName);
   this.employeeForm.controls['lastName'].setValue(row.lastName);
   this.employeeForm.controls['age'].setValue(row.age);
@@ -104,19 +108,22 @@ onEdit(row:any){
 
 }
 updateEmployeeDetails(){
- 
-  this.employeeModelObj.firstName=this.employeeForm.value.firstName;
-  this.employeeModelObj.lastName=this.employeeForm.value.lastName;
-  this.employeeModelObj.age=this.employeeForm.value.age;
-  this.employeeModelObj.dob=this.employeeForm.value.dob;
-  this.employeeModelObj.employeeRole=this.employeeForm.value.employeeRole;
-  this.employeeModelObj.email=this.employeeForm.value.email;
-  this.employeeModelObj.mobileNumber=this.employeeForm.value.mobileNumber;
-  this.employeeModelObj.gender=this.employeeForm.value.gender;
-  this.employeeModelObj.bloodGroup=this.employeeForm.value.bloodGroup;
-  this.employeeModelObj.image=this.employeeForm.value.image;
- 
-  this.api.updateEmployee(this.employeeModelObj,this.employeeModelObj.id)
+
+  let req: EmployeeModel = {}
+  req.id=this.selectedRow.id;
+  req.firstName=this.employeeForm.value.firstName;
+  req.lastName=this.employeeForm.value.lastName;
+  req.age=this.employeeForm.value.age;
+  req.dob=this.employeeForm.value.dob;
+  req.employeeRole=this.employeeForm.value.employeeRole;
+  req.email=this.employeeForm.value.email;
+  req.mobileNumber=this.employeeForm.value.mobileNumber;
+  req.gender=this.employeeForm.value.gender;
+  req.bloodGroup=this.employeeForm.value.bloodGroup;
+  req.image=this.employeeForm.value.image;
+
+
+  this.api.updateEmployee(req,req.id)
   .subscribe(res=>{
     alert("Updated Sucessfully");
     
@@ -126,8 +133,9 @@ updateEmployeeDetails(){
     this.getAllEmployee();
 
   })
-
-  
+}
 }
 
-}
+
+
+

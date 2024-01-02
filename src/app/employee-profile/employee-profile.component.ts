@@ -11,7 +11,7 @@ import { AdminService } from '../shared/admin.service';
 })
 export class EmployeeProfileComponent  implements OnInit {
   profileForm!: FormGroup;
-  employeeModelObj:EmployeeProfile=new EmployeeProfile();
+  
   employeeData!:any;
   showAdd!:boolean;
   showUpdate!:boolean;
@@ -95,9 +95,11 @@ console.log(this.loginEmployee,this.profileForm);
 }
 
 onEdit(row:any){
-  
+ 
     this.showUpdate=true;
-  this.employeeModelObj.id=row.id;
+   
+   
+      
   this.profileForm.controls['firstName'].setValue(row.firstName);
   this.profileForm.controls['lastName'].setValue(row.lastName);
   this.profileForm.controls['age'].setValue(row.age);
@@ -113,17 +115,20 @@ onEdit(row:any){
 }
 
 updateProfile(){
-  this.employeeModelObj.firstName=this.profileForm.value.firstName;
-  this.employeeModelObj.lastName=this.profileForm.value.lastName;
-  this.employeeModelObj.age=this.profileForm.value.age;
-  this.employeeModelObj.dob=this.profileForm.value.dob;
-  this.employeeModelObj.employeeRole=this.profileForm.value.employeeRole;
-  this.employeeModelObj.email=this.profileForm.value.email;
-  this.employeeModelObj.mobileNumber=this.profileForm.value.mobileNumber;
-  this.employeeModelObj.gender=this.profileForm.value.gender;
-  this.employeeModelObj.bloodGroup=this.profileForm.value.bloodGroup;
-  this.employeeModelObj.image=this.profileForm.value.image;
-  this.api.updateEmployee(this.employeeModelObj,this.loginEmployee.id)
+  
+  let req: EmployeeProfile = {}
+ 
+  req.firstName=this.profileForm.value.firstName;
+ req.lastName=this.profileForm.value.lastName;
+  req.age=this.profileForm.value.age;
+  req.dob=this.profileForm.value.dob;
+  req.employeeRole=this.profileForm.value.employeeRole;
+  req.email=this.profileForm.value.email;
+  req.mobileNumber=this.profileForm.value.mobileNumber;
+ req.gender=this.profileForm.value.gender;
+  req.bloodGroup=this.profileForm.value.bloodGroup;
+   req.image=this.profileForm.value.image;
+  this.api.updateEmployee(req,this.loginEmployee.id)
   .subscribe(res=>{
    if(res){
     alert("Updated Sucessfully");

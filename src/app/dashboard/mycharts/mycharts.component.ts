@@ -8,8 +8,8 @@ import { Chart } from 'chart.js';
 })
 export class MychartsComponent implements OnInit {
   
-  chart=[];
-  chart2 = [];
+   chart=[];
+ 
   
 
   
@@ -33,19 +33,19 @@ export class MychartsComponent implements OnInit {
           {
             type: 'bar',
             label: 'Absentees',
-            data: [14, 50, 10, 30, 5, 12, 20, 45],
-            backgroundColor: ["darkblue","darkblue","darkblue","darkblue","darkblue"],//rgba(210,0,255,0.4)
+            data: [20, 30, 10, 50, 14],
+            backgroundColor: ["darkblue","darkblue","darkblue","darkblue","darkblue"],
             borderColor: 'rgba(255,0,255,0.4)',
-            fill: false,
+            
           },
          
           {
             type: 'bar',
             label: 'Presented',
-            data: [186, 150, 190, 170, 195, 188, 180, 155].reverse(),
+            data: [186, 150, 190, 170, 180].reverse(),
             backgroundColor:["maroon","maroon","maroon","maroon","maroon"],
             borderColor: 'rgba(0,0,255,0.4)',
-            fill: false,
+           
           }
         ]
       }

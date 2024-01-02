@@ -20,15 +20,7 @@ export class EmployeeLeaveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formValue= this.formbuilder.group({
-      firstName:[''],
-      lastName:[''],
-      typeofleave:[''],
-      startdate:[''],
-      enddate:[''],
-      rfl:[''],
-      status:[''],
-    })
+   
     this.getAllEmployee();
   }
   clickAddEmployee(){
@@ -36,32 +28,7 @@ export class EmployeeLeaveComponent implements OnInit {
     this.showAdd=true;
    
   }
-//FOR POSTING A DATA,LETS CREATE A METHOD
-postEmployeeDetails(){
-  let requestObj : EmployeeModel = {}
-  requestObj.firstName=this.formValue.value.firstName;
-  requestObj.lastName=this.formValue.value.lastName;
-  requestObj.typeofleave=this.formValue.value.typeofleave;
-  requestObj.startdate=this.formValue.value.startdate;
-  requestObj.enddate=this.formValue.value.enddate;
-  requestObj.rfl=this.formValue.value.rfl;
-  requestObj.leaveStatus=this.formValue.value.status;
-  this.employee.postEmployee(requestObj)
-  .subscribe(res=>{
-    alert("Employee is added Sucessfully")
-    let ref = document.getElementById('cancel')
-    ref?.click();
-    this.formValue.reset();
-    this.getAllEmployee();
-    
-  },
-  err=>{
-    alert("Something went wrong")
-  })
-  
 
-
-}
 
 getAllEmployee(){
   this.employeeData=[];

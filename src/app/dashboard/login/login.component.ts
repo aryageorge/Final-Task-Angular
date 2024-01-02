@@ -21,12 +21,17 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if(this.loginObj.userName=='georgemp23@gmail.com'&& this.loginObj.password=='george@123'){
       this.adminService.getLoginedUser("Arya")
-      .subscribe(res=>{ 
-        const loginedUser = res;
-        localStorage.setItem("userDetails",JSON.stringify(loginedUser))
-        console.log("loginedUser",loginedUser)
-      })
-      this.router.navigateByUrl('hr')//hr page
+      .subscribe( 
+       { next: (res) => {
+          const loginedUser = res;
+          this.router.navigateByUrl('hr'); // hr page
+          localStorage.setItem("userDetails", JSON.stringify(loginedUser));
+          console.log("loginedUser", loginedUser);
+        },
+        error: (err) => {
+          alert("Wrong Credentials");
+        }})
+     
     }
      else if(this.loginObj.userName=='Arya'&& this.loginObj.password=='Arya@123') {
       
